@@ -15,7 +15,8 @@ import {
   Text,
   Platform,
   Modal,
-  ScrollView,Alert
+  ScrollView,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {inject, observer} from 'mobx-react';
@@ -27,6 +28,8 @@ import RNPickerSelect from 'react-native-picker-select';
 import {ReadItem} from '../Utilities/helpers/AsyncStorage';
 import ImageResizer from 'react-native-image-resizer';
 import RNFetchBlob from 'react-native-fetch-blob';
+import HeaderComponent from '../ReusableComponents/HeaderComponent';
+import LinearGradient from 'react-native-linear-gradient';
 
 @inject('ProductStore')
 @observer
@@ -289,8 +292,8 @@ class ProductReportScreen extends Component {
   };
 
   handleUploadPhoto = async () => {
-    let {id, batch,code_data} = this.props.ProductStore.product;
-   
+    let {id, batch, code_data} = this.props.ProductStore.product;
+
     let token = (await ReadItem('token')) ? await ReadItem('token') : null;
     let data = {
       token: token,
@@ -298,9 +301,9 @@ class ProductReportScreen extends Component {
       batch: JSON.stringify(batch),
       issue_type: this.state.issueType,
       description: this.state.description,
-      code_data:code_data
+      code_data: code_data,
     };
-console.warn("d",data)
+    console.warn('d', data);
     if (!data.issue_type) {
       this.setState({
         error: 'Please choose product type of issue. ',
@@ -321,11 +324,11 @@ console.warn("d",data)
       body,
     );
 
-    console.warn("sucessData",uploadReportData),
-    console.log("sucessData",JSON.stringify(uploadReportData))
+    console.warn('sucessData', uploadReportData),
+      console.log('sucessData', JSON.stringify(uploadReportData));
     if (uploadReportData) {
       this.setState({
-        error:"Product reported successfully.",
+        error: 'Product reported successfully.',
         modelVisible: true,
         image: null,
         imageURI: null,
@@ -334,122 +337,140 @@ console.warn("d",data)
         selectUploadImageType: null,
       });
       this.props.navigation.navigate('Home');
-      Alert.alert("Product reported successfully")
+      Alert.alert('Product reported successfully');
     }
   };
 
   render() {
     return (
-      <View style={styles.ProductReportContainer}>
-       
-       
-        <View style={styles.Heading}>
-          <CText  style={styles.HeadingText}>Report Issue</CText>
-        </View>
-        <View style={styles.SelectPicker}>
-          <RNPickerSelect
-            onValueChange={value => this.setState({issueType: value})}
-            items={this.state.items}
-            value={this.state.issueType}
-            placeholder={this.state.placeholder}
-            onUpArrow={() => {
-              this.inputRefs.firstTextInput.focus();
-            }}
-            onDownArrow={() => {
-              this.inputRefs.issueType.togglePicker();
-            }}
-            style={{
-              ...pickerSelectStyles,
-              iconContainer: {
-                top: 10,
-                right: 12,
-              },
-              placeholder: {
-                color: 'gray',
-                fontSize: 16,
-              },
-            }}
-            ref={el => {
-              this.inputRefs.issueType = el;
-            }}
-            Icon={() => {
-              return (
-                <Icon
-                  name="angle-down"
-                  size={30}
-                  color={COLORS.SECONDARY_COLOR}
-                />
-              );
-            }}
-          />
-        </View>
-        <View style={styles.textAreaContainer}>
-          <TextInput
-            style={styles.textArea}
-            selectionColor={COLORS.SECONDARY_COLOR}
-            underlineColorAndroid="transparent"
-            placeholder="Message"
-            placeholderTextColor="grey"
-            numberOfLines={10}
-            multiline={true}
-            onChangeText={value => this.setState({description: value})}
-            value={this.state.description}
-          />
-        </View>
-        <View style={styles.ButtonStyle}>
-          <View style={styles.ButtonContainer}>
-            <RNPickerSelect
-              onValueChange={value => this.handleChoosePhoto(value)}
-              items={this.state.imageUploadOptions}
-              value={this.state.selectUploadImageType}
-              placeholder={this.state.imageUploadPlaceholder}
-              style={{
-                ...pickerSelectImageButtonStyles,
-                placeholder: {
-                  color: 'white',
-                  fontSize: 10,
-                },
-              }}
-            />
-          </View>
-        </View>
-        {this.state.imageURI && (
-          <>
-            <View style={styles.uploadImageContainer}>
-              <Image
-                source={{
-                  uri: this.state.imageURI,
-                }}
-                style={{width: '100%', height: 250}}
+        <View style={{flex: 1,
+          justifyContent: 'flex-start',
+          flexGrow: 1,}}>
+          <HeaderComponent navigation={this.props.navigation}/>
+          <View style={styles.ProductReportContainer}>
+
+            <View style={styles.Heading}>
+              <CText style={styles.HeadingText}>Report Issue</CText>
+            </View>
+            <View style={styles.SelectPicker}>
+              <RNPickerSelect
+                  onValueChange={value => this.setState({issueType: value})}
+                  items={this.state.items}
+                  value={this.state.issueType}
+                  placeholder={this.state.placeholder}
+                  onUpArrow={() => {
+                    this.inputRefs.firstTextInput.focus();
+                  }}
+                  onDownArrow={() => {
+                    this.inputRefs.issueType.togglePicker();
+                  }}
+                  style={{
+                    ...pickerSelectStyles,
+                    iconContainer: {
+                      top: 10,
+                      right: 12,
+                    },
+                    placeholder: {
+                      color: 'gray',
+                      fontSize: 16,
+                    },
+                  }}
+                  ref={el => {
+                    this.inputRefs.issueType = el;
+                  }}
+                  Icon={() => {
+                    return (
+                        <Icon
+                            name="angle-down"
+                            size={30}
+                            color={COLORS.SECONDARY_COLOR}
+                        />
+                    );
+                  }}
+              />
+            </View>
+            <View style={styles.textAreaContainer}>
+              <TextInput
+                  style={styles.textArea}
+                  selectionColor={COLORS.SECONDARY_COLOR}
+                  underlineColorAndroid="transparent"
+                  placeholder="Message"
+                  placeholderTextColor="grey"
+                  numberOfLines={10}
+                  multiline={true}
+                  onChangeText={value => this.setState({description: value})}
+                  value={this.state.description}
               />
             </View>
             <View style={styles.ButtonStyle}>
-              <TouchableOpacity onPress={this.handleUploadPhoto}>
-                <View style={styles.ButtonContainer}>
-                  <CText style={styles.ButtonText}>Submit</CText>
-                </View>
-              </TouchableOpacity>
+              <LinearGradient
+                  style={styles.ButtonContainer}
+                  start={{x: 0, y: 0}}
+                  end={{x: 1, y: 0}}
+                  colors={['#6e2775', '#ee335c']}>
+              <View style={styles.ButtonContainer}>
+                <RNPickerSelect
+                    onValueChange={value => this.handleChoosePhoto(value)}
+                    items={this.state.imageUploadOptions}
+                    value={this.state.selectUploadImageType}
+                    placeholder={this.state.imageUploadPlaceholder}
+                    style={{
+                      ...pickerSelectImageButtonStyles,
+                      placeholder: {
+                        color: 'white',
+                        fontSize: 10,
+                      },
+                    }}
+                />
+              </View>
+              </LinearGradient>
             </View>
-          </>
-        )}
-        {this.state.modelVisible && (
-          <TouchableOpacity
-            onPress={() => this.setState({modelVisible: false})}
-            style={{
-              bottom: 0,
-              position: 'absolute',
-              backgroundColor: COLORS.SECONDARY_COLOR,
-              padding: 10,
-              width: 500,
-            }}>
-            <View>
-              <Text style={{color: 'white'}}>{this.state.error}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-        {this.props.ProductStore.loader && <CLoader />}
+            {this.state.imageURI && (
+                <>
+                  <View style={styles.uploadImageContainer}>
+                    <Image
+                        source={{
+                          uri: this.state.imageURI,
+                        }}
+                        style={{width: '100%', height: 250}}
+                    />
+                  </View>
 
-      </View>
+                    <View style={styles.ButtonStyle}>
+                      <LinearGradient
+                          style={styles.ButtonContainer}
+                          start={{x: 0, y: 0}}
+                          end={{x: 1, y: 0}}
+                          colors={['#6e2775', '#ee335c']}>
+                      <TouchableOpacity onPress={this.handleUploadPhoto}>
+                        <View style={styles.ButtonContainer}>
+                          <CText style={styles.ButtonText}>Submit</CText>
+                        </View>
+                      </TouchableOpacity>
+                      </LinearGradient>
+                    </View>
+
+                </>
+            )}
+            {this.state.modelVisible && (
+                <TouchableOpacity
+                    onPress={() => this.setState({modelVisible: false})}
+                    style={{
+                      bottom: 0,
+                      position: 'absolute',
+                      backgroundColor: COLORS.SECONDARY_COLOR,
+                      padding: 10,
+                      width: 500,
+                    }}>
+                  <View>
+                    <Text style={{color: 'white'}}>{this.state.error}</Text>
+                  </View>
+                </TouchableOpacity>
+            )}
+            {this.props.ProductStore.loader && <CLoader />}
+          </View>
+        </View>
+
     );
   }
 }
@@ -494,9 +515,7 @@ const styles = StyleSheet.create({
   },
   ProductReportContainer: {
     padding: 20,
-    flex: 1,
-    justifyContent: 'flex-start',
-    flexGrow: 1,
+
   },
   ButtonStyle: {
     justifyContent: 'center',
@@ -507,7 +526,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 200,
     height: 50,
-    backgroundColor: COLORS.SECONDARY_COLOR,
+    // backgroundColor: COLORS.SECONDARY_COLOR,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',

@@ -35,6 +35,7 @@ class Main extends React.Component {
     const {token} = this.props.LoginStore;
     return (
       <NavigationContainer>
+
         <StatusBar
           barStyle="dark-content"
           backgroundColor={COLORS.SECONDARY_COLOR}

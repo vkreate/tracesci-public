@@ -68,10 +68,10 @@ export const productDetailStyle = StyleSheet.create({
     marginBottom: 15,
   },
   ButtonContainer: {
-    marginTop: 20,
+    // marginTop: 10,
     width: 200,
     height: 50,
-    backgroundColor: COLORS.SECONDARY_COLOR,
+    // backgroundColor: COLORS.SECONDARY_COLOR,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',

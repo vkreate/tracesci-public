@@ -10,6 +10,7 @@ import COLORS from '../Utilities/Colors';
 import {inject, observer} from 'mobx-react';
 import CLoader from '../ReusableComponents/CLoader';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import HeaderComponent from '../ReusableComponents/HeaderComponent';
 
 @inject('OtpStore', 'ProductStore')
 @observer
@@ -35,14 +36,14 @@ class ScanHistory extends Component {
     this.unsubscribe();
   }
 
-  productDetails = async (url,scan_id) => {
+  productDetails = async (url, scan_id) => {
     let latitude = this.props.OtpStore.latitude;
     let longitude = this.props.OtpStore.longitude;
     let response = await this.props.ProductStore.getProductDetail(
       url,
       latitude,
       longitude,
-      scan_id
+      scan_id,
     );
     if (response) {
       this.props.navigation.navigate('ProductDetail');
@@ -55,10 +56,11 @@ class ScanHistory extends Component {
       <View
         style={{
           flex: 1,
-          flexGrow: 1,
+          // flexGrow: 1,
           justifyContent: 'center',
           backgroundColor: '#f2f2f2',
         }}>
+        <HeaderComponent navigation={this.props.navigation} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           persistentScrollbar={false}>
@@ -67,7 +69,7 @@ class ScanHistory extends Component {
                 <TouchableOpacity
                   key={index}
                   style={styles.container}
-                  onPress={() => this.productDetails(item.url,item.scan_id)}>
+                  onPress={() => this.productDetails(item.url, item.scan_id)}>
                   <View style={styles.ListItem}>
                     <View style={styles.ListRow}>
                       <CText style={styles.HeadingText}>Product Name :</CText>

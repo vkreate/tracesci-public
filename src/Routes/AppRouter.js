@@ -25,28 +25,28 @@ const InformationStackScreen = ({navigation}) => (
       title: '',
       headerBackTitleVisible: false,
       gestureEnabled: false,
-      headerShown: true,
+      headerShown: false,
     })}>
     <InformationStack.Screen
       name={CONSTANTS.SCREENS.BARCODE}
       component={Information}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </InformationStack.Navigator>
@@ -64,22 +64,22 @@ const HomeStackScreen = ({navigation}) => (
       name={CONSTANTS.SCREENS.BARCODE}
       component={Home}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </HomeStack.Navigator>
@@ -97,22 +97,22 @@ const ScanStackScreen = ({navigation}) => (
       name={CONSTANTS.SCREENS.BARCODE}
       component={Barcode}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </ScanStack.Navigator>
@@ -124,28 +124,28 @@ const ScanListScreenStack = ({navigation}) => (
       title: '',
       headerBackTitleVisible: false,
       gestureEnabled: false,
-      headerShown: true,
+      headerShown: false,
     })}>
     <ScanListStack.Screen
       name={CONSTANTS.SCREENS.BARCODE}
       component={ScanHistoryScreen}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </ScanListStack.Navigator>
@@ -157,28 +157,28 @@ const ProductDetailScreenStack = ({navigation}) => (
       title: '',
       headerBackTitleVisible: false,
       gestureEnabled: false,
-      headerShown: true,
+      headerShown: false,
     })}>
     <productDetailStack.Screen
       name={CONSTANTS.SCREENS.PRODUCT_DETAIL}
       component={ProductDetailScreen}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </productDetailStack.Navigator>
@@ -196,22 +196,22 @@ const ProductReportScreenStack = ({navigation}) => (
       name={CONSTANTS.SCREENS.PRODUCT_REPORT}
       component={ProductReportScreen}
       options={{
-        headerShown: true,
-        title: CONSTANTS.APP_HEADER_TITLE,
-        headerTintColor: 'white',
-        headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
-        headerStyle: {
-          backgroundColor: COLORS.SECONDARY_COLOR,
-        },
-        headerLeft: () => (
-          <Icon
-            name="bars"
-            onPress={() => navigation.openDrawer()}
-            style={{marginLeft: 8}}
-            size={30}
-            color="#fff"
-          />
-        ),
+        headerShown: false,
+        // title: CONSTANTS.APP_HEADER_TITLE,
+        // headerTintColor: 'white',
+        // headerTitleStyle: {flex: 1, textAlign: 'center', marginRight: 38},
+        // headerStyle: {
+        //   backgroundColor: COLORS.SECONDARY_COLOR,
+        // },
+        // headerLeft: () => (
+        //   <Icon
+        //     name="bars"
+        //     onPress={() => navigation.openDrawer()}
+        //     style={{marginLeft: 8}}
+        //     size={30}
+        //     color="#fff"
+        //   />
+        // ),
       }}
     />
   </productReportStack.Navigator>

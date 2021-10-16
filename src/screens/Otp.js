@@ -17,6 +17,7 @@ import CONSTANTS from '../Utilities/Constants';
 import CopyRight from '../ReusableComponents/CopyRight';
 import HeaderTitle from '../ReusableComponents/HeaderTitle';
 import imagePath from '../Utilities/ImagePath';
+import LinearGradient from "react-native-linear-gradient";
 
 @inject('OtpStore', 'LoginStore')
 @observer
@@ -164,7 +165,17 @@ class Otp extends Component {
                 height: 50,
               }}
             />
+
             <View style={styles.ButtonContainer}>
+              <LinearGradient
+                  style={styles.ButtonStyle}
+                  // start={start} end={end}
+                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                  colors={[
+                    '#6e2775',
+                    '#ee335c'
+                  ]}
+              >
               <TouchableOpacity
                 style={styles.ButtonStyle}
                 onPress={this.submit}>
@@ -172,7 +183,9 @@ class Otp extends Component {
                   <Icon name="angle-double-right" size={40} color="white" />
                 </View>
               </TouchableOpacity>
+              </LinearGradient>
             </View>
+
           </View>
           <View
             style={{
@@ -230,7 +243,7 @@ export default Otp;
 
 const styles = StyleSheet.create({
   ButtonStyle: {
-    backgroundColor: COLORS.SECONDARY_COLOR,
+    // backgroundColor: COLORS.SECONDARY_COLOR,
     justifyContent: 'center',
     width: 70,
     height: 70,

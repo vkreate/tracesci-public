@@ -30,6 +30,7 @@ import CopyRight from '../ReusableComponents/CopyRight';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import imagePath from '../Utilities/ImagePath';
+import LinearGradient from "react-native-linear-gradient";
 
 @inject('LoginStore', 'OtpStore')
 @observer
@@ -184,11 +185,21 @@ class Login extends Component {
                 value={phoneNumber}
               />
             </View>
+            <LinearGradient
+                style={styles.ButtonStyle}
+                // start={start} end={end}
+                start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                colors={[
+                 '#6e2775',
+                '#ee335c'
+                ]}
+            >
             <TouchableOpacity style={styles.ButtonStyle} onPress={this.login}>
               <View style={{alignItems: 'center'}}>
                 <Icon name="angle-double-right" size={40} color="white" />
               </View>
             </TouchableOpacity>
+            </LinearGradient>
           </View>
         </View>
         {this.state.modelVisible === true && (
@@ -247,7 +258,7 @@ const styles = StyleSheet.create({
     color: COLORS.SECONDARY_COLOR,
   },
   ButtonStyle: {
-    backgroundColor: COLORS.SECONDARY_COLOR,
+    // backgroundColor: COLORS.SECONDARY_COLOR,
     justifyContent: 'center',
     width: 70,
     height: 70,

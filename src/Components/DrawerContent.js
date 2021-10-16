@@ -4,6 +4,7 @@ import {observer, inject} from 'mobx-react';
 import COLORS from '../Utilities/Colors';
 import {Title, Caption, Drawer} from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import LinearGradient from "react-native-linear-gradient";
 
 @inject('LoginStore', 'OtpStore', 'ProductStore')
 @observer
@@ -19,7 +20,17 @@ class DrawerContent extends React.Component {
   render() {
     const {signOut, phoneNumber} = this.props.LoginStore;
     return (
+        <LinearGradient
+            style={styles.drawerContainer}
+            // start={start} end={end}
+            start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }}
+            colors={[
+              '#6e2775',
+              '#ee335c'
+            ]}
+        >
       <View style={styles.drawerContainer}>
+
         <DrawerContentScrollView {...this.props}>
           <View style={styles.drawerContent}>
             <View>
@@ -87,6 +98,7 @@ class DrawerContent extends React.Component {
           </View>
         </Drawer.Section>
       </View>
+        </LinearGradient>
     );
   }
 }
@@ -96,7 +108,7 @@ export default DrawerContent;
 const styles = StyleSheet.create({
   drawerContainer: {
     flex: 1,
-    backgroundColor: COLORS.SECONDARY_COLOR,
+    // backgroundColor: COLORS.SECONDARY_COLOR,
   },
   drawerContent: {
     flex: 1,

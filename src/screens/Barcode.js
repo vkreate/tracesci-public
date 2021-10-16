@@ -17,6 +17,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 import {inject, observer} from 'mobx-react';
 import CLoader from '../ReusableComponents/CLoader';
+import HeaderComponent from "../ReusableComponents/HeaderComponent";
 
 @inject('OtpStore', 'ProductStore')
 @observer
@@ -151,6 +152,8 @@ class Barcode extends Component {
     }
     return (
       <View style={styles.QrCodeContainer}>
+
+          <HeaderComponent />
         <QRCodeScanner
           onRead={e => this.onSuccess(e)}
           showMarker={true}
